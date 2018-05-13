@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clasessql;
 
-import com.sun.istack.internal.logging.Logger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,19 +11,19 @@ import java.util.logging.Level;
 
 /**
  *
- * @author Usuario 1 DAM
+ * @author Alba
  */
 public class Departamentos {
 
     private Connection conexion;
-     ArrayList<Departamento> departamento;
+    ArrayList<Departamento> departamento;
 
     public Departamentos() {
 
         try {
             conexion = DriverManager.getConnection("jdbc:mysql://localhost/ejemplo", "ejemplo", "ejemplo");
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(Departamentos.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error con la conexión");
         }
 
     }
@@ -56,7 +50,8 @@ public class Departamentos {
         dep = new Departamento(rs.getInt(1), rs.getString(2), rs.getString(3));
         return dep;
     }
-    public ArrayList<Departamento> ReadTodos() throws SQLException { //Nos tiene que devolver un departamento
+
+    public ArrayList<Departamento> ReadTodos() throws SQLException { //Nos tiene que devolver un conjunto de departamentos
         Departamento dep;
         departamento = new ArrayList<>();//inicializamos el arraylist
         String sql = "SELECT * FROM departamentos";
@@ -78,17 +73,12 @@ public class Departamentos {
         return departamento;
     }
 
-   
-
     public int Update(int numDepartamento, Departamento dep) throws SQLException {
         int filas;
-        String sql = "UPDATE Departamento SET NombreDpto='?' WHERE dept_no ='?' loc='?'";
-        PreparedStatement sentencia;
-
-        sentencia = conexion.prepareCall(sql);
+        String sql = "UPDATE Departamento SET NombreDpto='?' WHERE dept_no = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(2, dep.getNumDepartamento());
         sentencia.setString(1, dep.getNombreDpto());
-        sentencia.setString(3, dep.getLoc());
         filas = sentencia.executeUpdate();
 
         return filas;
@@ -96,9 +86,8 @@ public class Departamentos {
 
     public int Delete(int numDepartamento) throws SQLException {
         int filas;
-        String sql = "DELETE FROM DEPARTAMENTO WHERE dept_no ='?'";
-        PreparedStatement sentencia;
-        sentencia = conexion.prepareCall(sql);
+        String sql = "DELETE FROM departamentos WHERE dept_no = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, numDepartamento);
         filas = sentencia.executeUpdate();
         return filas;
@@ -118,19 +107,20 @@ public class Departamentos {
 
         return Read(l);
     }
- public Departamento buscarUno(String NombreDpto) throws SQLException {
-        Departamento dep= null;
+
+    public Departamento buscarUno(String NombreDpto) throws SQLException {
+        Departamento dep = null;
 
         String sql = "SELECT * FROM departamentos WHERE dnombre = ?";
-        PreparedStatement sentencia= conexion.prepareStatement(sql);
-        sentencia.setString(1,NombreDpto);
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, NombreDpto);
         ResultSet rs = sentencia.executeQuery();
-        if(rs.first())//el result set para que no nos entre en el -1. ponemos que nos apunte al primero.
+        if (rs.first())//el result set para que no nos entre en el -1. ponemos que nos apunte al primero.
         {
             dep = new Departamento(rs.getInt("dept_no"), rs.getString("dnombre"), rs.getString("loc"));
-     //       departamento.add(dep);
+
         }
         return dep;
     }
- 
+
 }

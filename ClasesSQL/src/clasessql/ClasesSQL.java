@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clasessql;
 
 import java.sql.SQLException;
@@ -10,13 +5,9 @@ import java.util.Scanner;
 
 /**
  *
- * @author Usuario 1 DAM
+ * @author Alba
  */
 public class ClasesSQL {
-
-    /**
-     *
-     */
     public static void main(String[] args) throws SQLException {
         Scanner sc = new Scanner(System.in);
         boolean continuar = true;
@@ -26,7 +17,7 @@ public class ClasesSQL {
          * Bucle que, mientras sea "true" seguirá dentro de él.
          */
         while (continuar == true) {
-   System.out.println("\t○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ "); 
+            System.out.println("\t○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ");
             System.out.println("\t○       Elija una opción     ○");
             System.out.println("\t○~~~~~~~~~~~~~~~~~~~~~~~~~~~~○");
             System.out.println("\t○ 1~ Listado departamentos   ○");
@@ -44,39 +35,38 @@ public class ClasesSQL {
             switch (Integer.parseInt(sc.nextLine())) {
                 case 0:
                     return;
-                    //Busqueda de Listado departamento
+                //Busqueda de Listado departamento
                 case 1:
                     depc.listado();
                     break;
-                    //Busqueda de buscar departamento
+                //Busqueda de buscar departamento
                 case 2:
                     depc.buscarDpto();
                     break;
-                    //Busqueda de crear departamento
+                //Busqueda de crear departamento
                 case 3:
                     depc.crearDpto();
                     break;
-                    //Busqueda de eliminar departamento
+                //Busqueda de eliminar departamento
                 case 4:
                     depc.eliminarDpto();
                     break;
-                    //Busqueda de listado empleados
+                //Busqueda de listado empleados
                 case 5:
                     empc.listado();
                     break;
-                    //Busqueda de un empleado
+                //Busqueda de un empleado
                 case 6:
                     empc.buscarUno();
                     break;
-                    //Busqueda de crear un empleado
+                //Busqueda de crear un empleado
                 case 7:
                     empc.crearEmp();
                     break;
-                    //Busqueda de eliminar un empleado
+                //Busqueda de eliminar un empleado
                 case 8:
                     empc.eliminarEmpleado();
                     break;
-                
 
             }
         }

@@ -7,13 +7,13 @@ package clasessql;
 
 /**
  *
- * @author Usuario 1 DAM
+ * @author Alba
  */
 public class Departamento {
       private int numDepartamento;
     private String nombreDpto;
     private String loc;
-
+//Creamos un constructor vacio y otro lleno con todos los atributos
     public Departamento() {
     }
 
@@ -22,7 +22,7 @@ public class Departamento {
         this.nombreDpto = nombreDpto;
         this.loc = loc;
     }
-
+//A continuación, creamos todos los getters y los setters
     public int getNumDepartamento() {
         return numDepartamento;
     }

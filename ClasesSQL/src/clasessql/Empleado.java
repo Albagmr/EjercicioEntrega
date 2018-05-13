@@ -1,18 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clasessql;
-
 
 import java.sql.Date;
 
 /**
  *
- * @author Usuario 1 DAM
+ * @author Alba
  */
 public class Empleado {
+
     private int numEmpleado;
     private String apellido;
     private String oficio;
@@ -22,9 +17,16 @@ public class Empleado {
     private float comision;
     private int numeroDepartamento;
 
+    /**
+     * Constructor vacío
+     */
+
     public Empleado() {
     }
 
+    /**
+     * Constructor lleno
+     */
     public Empleado(int numEmpleado, String apellido, String oficio, int director, Date fechaAlt, float salario, float comision, int numeroDepartamento) {
         this.numEmpleado = numEmpleado;
         this.apellido = apellido;
@@ -36,7 +38,7 @@ public class Empleado {
         this.numeroDepartamento = numeroDepartamento;
     }
 
-
+// creamos los getters y los setters
     public int getNumEmpleado() {
         return numEmpleado;
     }
@@ -100,8 +102,8 @@ public class Empleado {
     public void setNumeroDepartamento(int numeroDepartamento) {
         this.numeroDepartamento = numeroDepartamento;
     }
-    
-    public void create(){
-        
-    } 
+
+    public void create() {
+
+    }
 }
